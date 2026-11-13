@@ -16,3 +16,13 @@ jobs:
 
     - name: Собрать базовый образ
       run: docker build -t pochini-base base
+
+
+    - name: Собрать образы всех задач
+      run: |
+        for d in tasks/*/; do
+          name=$(basename "$d")
+          echo "=== собираю $name"
+          docker build -t "pochini-$name" --build-arg TASK="$name" -f base/Dockerfile.task .
+        done
+

@@ -1,0 +1,9 @@
+FROM pochini-base
+
+ARG TASK
+COPY tasks/${TASK}/ /opt/task/
+
+# prepare.sh "ломает" сервер на этапе сборки образа,
+# start.sh — при запуске контейнера (процессы, сервисы)
+RUN chmod +x /opt/task/*.sh \
+    && if [ -f /opt/task/prepare.sh ]; then /opt/task/prepare.sh; fi

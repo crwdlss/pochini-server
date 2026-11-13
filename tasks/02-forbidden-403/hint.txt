@@ -1,0 +1,4 @@
+У nginx есть лог ошибок. Где он лежит? Посмотри в /var/log/nginx/
+В логе будет "Permission denied". Узнай, от какого пользователя работают рабочие процессы nginx: ps aux | grep nginx
+Посмотри права: ls -ld /var/www/html и ls -l /var/www/html. Чтобы прочитать файл, нужен доступ и к самому файлу, и к папке (бит x).
+Например: chmod 755 /var/www/html и chmod 644 /var/www/html/index.html

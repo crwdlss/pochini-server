@@ -1,0 +1,4 @@
+Прочитай ошибку внимательно. Посмотри права файла: ls -l /opt/scripts/backup.sh
+Право на запуск добавляется через chmod. Какой флаг отвечает за исполнение?
+Новая ошибка "bad interpreter: /bin/bash^M"? Что за ^M? Посмотри невидимые символы: cat -A /opt/scripts/backup.sh
+^M — это \r, перевод строки Windows. Убери его: sed -i 's/\r$//' /opt/scripts/backup.sh

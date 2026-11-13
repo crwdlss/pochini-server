@@ -1,0 +1,4 @@
+Когда задача в cron "молчит", первым делом заставь её говорить: добавь в конец строки в /etc/cron.d/backup  >> /var/log/backup.log 2>&1  и подожди минуту.
+Что написано в /var/log/backup.log? Почему команду не нашли, если вручную она работает?
+Сравни PATH: у тебя — echo $PATH, а у cron PATH по умолчанию только /usr/bin:/bin. Где лежит backup-now? which backup-now
+Исправь: укажи полный путь /opt/tools/bin/backup-now в cron-файле (или задай PATH= в начале файла).

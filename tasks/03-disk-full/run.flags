@@ -1,0 +1,1 @@
+--tmpfs /data:rw,size=20m

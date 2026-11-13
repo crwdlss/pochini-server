@@ -1,0 +1,10 @@
+#!/bin/bash
+# Показывает подсказки по одной: от лёгкой к почти-ответу
+mapfile -t HINTS < <(grep -v '^[[:space:]]*$' /opt/task/hint.txt)
+total=${#HINTS[@]}
+for i in "${!HINTS[@]}"; do
+    echo -e "\e[33m💡 Подсказка $((i + 1))/$total:\e[0m ${HINTS[$i]}"
+    if [ "$i" -lt $((total - 1)) ]; then
+        read -rp "   Enter — следующая подсказка, Ctrl+C — хватит, попробую сам " _
+    fi
+done

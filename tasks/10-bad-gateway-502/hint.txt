@@ -1,0 +1,4 @@
+502 значит: nginx работает, но не может достучаться до приложения за ним. Проверяй цепочку по звеньям. Начни с лога nginx: /var/log/nginx/error.log
+Куда nginx отправляет запросы? Найди proxy_pass в /etc/nginx/sites-available/default. Слушает ли кто-то этот порт? ss -tlnp
+API вообще жив? ps aux | grep api и cat /var/log/api.log. start-api пишет «запущен», но так ли это?
+KeyError: 'API_PORT' — переменная есть в /etc/api.env, но python её не видит. Чем отличается VAR=1 от export VAR=1? Исправь файл, запусти start-api, сверь порт с proxy_pass и сделай nginx -s reload.

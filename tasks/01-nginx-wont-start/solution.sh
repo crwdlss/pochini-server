@@ -1,0 +1,3 @@
+#!/in/bash
+sed -i 's/listen 80 default_server$/listen 80 default_server;/' /etc/nginx/sites-available/default
+nginx
